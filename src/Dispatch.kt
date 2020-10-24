@@ -2,10 +2,13 @@ package org.yttr
 
 import io.ktor.application.call
 import io.ktor.features.BadRequestException
+import io.ktor.response.respond
 import io.ktor.routing.Routing
+import io.ktor.routing.delete
 import io.ktor.routing.get
 import kotlinx.html.h1
 import kotlinx.html.pre
+import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.yttr.database.Webhook
 import org.yttr.database.Webhooks
@@ -26,5 +29,15 @@ fun Routing.dispatch() {
             h1 { +webhook.slug }
             pre { +webhook.action }
         }
+    }
+
+    delete("/{slug}") {
+        val slug = call.parameters["slug"] ?: error("No slug given")
+        newSuspendedTransaction {
+            Webhooks.deleteWhere {
+                Webhooks.slug eq slug
+            }
+        }
+        call.respond("Deleted $slug")
     }
 }
