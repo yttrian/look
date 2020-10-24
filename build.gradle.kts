@@ -1,6 +1,7 @@
 val ktorVersion: String by project
 val kotlinVersion: String by project
 val exposedVersion: String by project
+val postgresqlVersion: String by project
 val arrowVersion: String by project
 val logbackVersion: String by project
 
@@ -36,6 +37,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.postgresql:postgresql:$postgresqlVersion")
     // Λrrow
     implementation("io.arrow-kt:arrow-core:$arrowVersion")
     implementation("io.arrow-kt:arrow-syntax:$arrowVersion")

@@ -5,3 +5,7 @@
 *.iml
 *.ipr
 *.iws
+
+# env files
+*.env
+!example.env
