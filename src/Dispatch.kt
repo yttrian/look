@@ -27,6 +27,11 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import java.nio.charset.StandardCharsets
 
+/**
+ * Webhook dispatching and editing
+ *
+ * Currently does NOT run Lua sandboxed! This is very important to note.
+ */
 fun Routing.dispatch() {
     suspend fun getWebhook(slug: String) = newSuspendedTransaction {
         Webhook.find {

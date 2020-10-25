@@ -21,6 +21,9 @@ import org.yttr.database.Webhook
 import org.yttr.database.Webhooks
 import org.yttr.partial.respondStandardHTML
 
+/**
+ * Webhook "mother", creates and lists webhooks ("children")
+ */
 fun Route.mother() {
     get("/") {
         val webhooks = newSuspendedTransaction { Webhook.all().sortedBy { Webhooks.id }.toList() }

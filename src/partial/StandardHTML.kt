@@ -8,7 +8,9 @@ import kotlinx.html.head
 import kotlinx.html.main
 import kotlinx.html.title
 
-
+/**
+ * Like respondHtml but includes standard header and footer
+ */
 suspend fun ApplicationCall.respondStandardHTML(block: HtmlBlockTag.() -> Unit) = respondHtml {
     head {
         title("look")

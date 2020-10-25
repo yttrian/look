@@ -2,6 +2,9 @@ package org.yttr.partial
 
 import kotlinx.html.BODY
 
+/**
+ * Typical footer for all pages
+ */
 fun BODY.standardFooter() {
     javascript("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js") {
         sri = mapOf(

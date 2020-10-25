@@ -19,8 +19,14 @@ import org.slf4j.event.Level
 import org.yttr.database.Webhooks
 import java.net.URI
 
+/**
+ * Entry point of look
+ */
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
+/**
+ * Database connection
+ */
 val db by lazy {
     val dbURI = URI(System.getenv("DATABASE_URL"))
     val dbSSLMode = System.getenv("DATABASE_SSL_MODE") ?: "require"
@@ -32,6 +38,9 @@ val db by lazy {
     Database.connect(connectionUrl, driver = "org.postgresql.Driver", user = username, password = password)
 }
 
+/**
+ * Main module
+ */
 fun Application.module() {
     install(CallLogging) {
         level = Level.INFO
