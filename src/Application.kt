@@ -60,7 +60,7 @@ fun Application.module() {
 
     routing {
         get("/") {
-            val webhooks = newSuspendedTransaction { Webhook.all().toList() }
+            val webhooks = newSuspendedTransaction { Webhook.all().sortedBy { Webhooks.id }.toList() }
             call.respondStandardHTML {
                 h1 { +"Webhooks" }
                 ul {

@@ -56,7 +56,11 @@ fun Routing.dispatch() {
                     id = "editor"
                     pre { +webhook.action }
                 }
-                div("text-right m-3") {
+                div("text-right mt-3 mb-3") {
+                    button(classes = "btn btn-danger mr-1", type = ButtonType.button) {
+                        id = "delete"
+                        +"Delete"
+                    }
                     button(classes = "btn btn-secondary mr-1", type = ButtonType.button) {
                         id = "test"
                         +"Test"

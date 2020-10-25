@@ -31,7 +31,26 @@ require(["vs/editor/editor.main"], function () {
                 type: "PUT",
                 data: editor.getValue(),
                 success: function (data) {
-                    alert(data)
+                    alert(data);
+                }
+            });
+        });
+
+        $("#test").click(function () {
+            $.ajax({
+                type: "POST",
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+
+        $("#delete").click(function () {
+            $.ajax({
+                type: "DELETE",
+                success: function (data) {
+                    alert(data);
+                    location.href = "/";
                 }
             });
         });
