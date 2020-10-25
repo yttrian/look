@@ -1,3 +1,5 @@
+import tanvd.kosogor.proxy.shadowJar
+
 val ktorVersion: String by project
 val kotlinVersion: String by project
 val exposedVersion: String by project
@@ -8,6 +10,7 @@ val logbackVersion: String by project
 plugins {
     application
     kotlin("jvm") version "1.4.10"
+    id("tanvd.kosogor") version "1.0.9"
 }
 
 group = "org.yttr"
@@ -40,6 +43,18 @@ dependencies {
     implementation("org.luaj:luaj-jse:$luajVersion")
     // tests
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
+}
+
+shadowJar {
+    jar {
+        archiveName = "look.jar"
+        mainClass = "io.ktor.server.netty.EngineMain"
+    }
+}
+
+tasks.register("stage") {
+    dependsOn(":clean")
+    dependsOn("shadowJar")
 }
 
 kotlin.sourceSets["main"].kotlin.srcDirs("src")
