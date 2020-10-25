@@ -7,6 +7,6 @@ import org.jetbrains.exposed.dao.id.EntityID
 class Webhook(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<Webhook>(Webhooks)
 
-    val slug by Webhooks.slug
+    var slug by Webhooks.slug
     var action by Webhooks.action
 }

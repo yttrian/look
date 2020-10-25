@@ -10,21 +10,13 @@ import io.ktor.features.StatusPages
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.path
 import io.ktor.response.respond
-import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.cio.EngineMain
-import kotlinx.html.a
-import kotlinx.html.h1
-import kotlinx.html.li
-import kotlinx.html.ul
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.slf4j.event.Level
-import org.yttr.database.Webhook
 import org.yttr.database.Webhooks
-import org.yttr.partial.respondStandardHTML
 import java.net.URI
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
@@ -59,18 +51,7 @@ fun Application.module() {
     }
 
     routing {
-        get("/") {
-            val webhooks = newSuspendedTransaction { Webhook.all().sortedBy { Webhooks.id }.toList() }
-            call.respondStandardHTML {
-                h1 { +"Webhooks" }
-                ul {
-                    webhooks.forEach {
-                        li { a("/${it.slug}") { +it.slug } }
-                    }
-                }
-            }
-        }
-
+        mother()
         staticContent()
         dispatch()
     }
