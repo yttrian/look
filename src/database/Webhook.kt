@@ -8,5 +8,5 @@ class Webhook(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<Webhook>(Webhooks)
 
     val slug by Webhooks.slug
-    val action by Webhooks.action
+    var action by Webhooks.action
 }
