@@ -2,13 +2,12 @@ val ktorVersion: String by project
 val kotlinVersion: String by project
 val exposedVersion: String by project
 val postgresqlVersion: String by project
-val arrowVersion: String by project
+val luajVersion: String by project
 val logbackVersion: String by project
 
 plugins {
     application
     kotlin("jvm") version "1.4.10"
-    kotlin("kapt") version "1.4.10"
 }
 
 group = "org.yttr"
@@ -22,7 +21,6 @@ repositories {
     mavenLocal()
     jcenter()
     maven { url = uri("https://kotlin.bintray.com/ktor") }
-    maven { url = uri("https://dl.bintray.com/arrow-kt/arrow-kt/") }
 }
 
 dependencies {
@@ -38,10 +36,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.postgresql:postgresql:$postgresqlVersion")
-    // Λrrow
-    implementation("io.arrow-kt:arrow-core:$arrowVersion")
-    implementation("io.arrow-kt:arrow-syntax:$arrowVersion")
-    kapt("io.arrow-kt:arrow-meta:$arrowVersion")
+    // LuaJ
+    implementation("org.luaj:luaj-jse:$luajVersion")
     // tests
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
 }
