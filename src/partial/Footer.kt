@@ -13,4 +13,10 @@ fun BODY.standardFooter() {
             "sha512" to "iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig=="
         )
     }
+    javascript("https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.min.js") {
+        sri = mapOf(
+            "sha512" to "dx6A3eMO/vvLembE8xNGc3RKUytoTIX3rNO5uMEhzhqnXYx1X5XYmjfZP7vxYv7x3gBhdj7Pgys8DUjdbDaLAA=="
+        )
+    }
+    javascript("/js/editor.js")
 }
